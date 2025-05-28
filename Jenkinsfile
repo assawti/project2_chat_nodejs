@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                git branch: 'feature/chat-deploy', url: 'https://github.com/assawti/project2_chat_nodejs.git'
+                git branch: 'dev', url: 'https://github.com/assawti/project2_chat_nodejs.git'
             }
         }
 
