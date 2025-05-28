@@ -18,20 +18,16 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                // Allow the pipeline to continue even if there is no test script
-                sh 'npm test || true'
-            }
-        }
+        // ⛔️ REMOVED: Run Tests stage
 
         stage('Deploy to App Server') {
             steps {
                 sshagent(['project2-ssh-key']) {
                     sh '''
                     ssh -o StrictHostKeyChecking=no ubuntu@52.5.199.242 '
-                      git config --global --add safe.directory /home/ubuntu/chat-app &&
+                      sudo git config --global --add safe.directory /home/ubuntu/chat-app &&
                       cd /home/ubuntu/chat-app &&
+                      sudo chown -R ubuntu:ubuntu .git &&
                       git pull &&
                       npm install &&
                       pm2 restart app.js
