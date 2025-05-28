@@ -30,7 +30,7 @@ pipeline {
                       sudo chown -R ubuntu:ubuntu .git &&
                       git pull &&
                       npm install &&
-                      pm2 restart app.js
+                      pm2 start app.js --name chat-app || pm2 restart chat-app
                     '
                     '''
                 }
