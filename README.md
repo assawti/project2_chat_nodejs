@@ -1,0 +1,1 @@
+This project is a real-time chat app built with Node.js and Socket.IO. It’s deployed on an AWS EC2 server with Nginx as a reverse proxy. The server uses an Elastic IP or Route 53 for public access, and security groups allow web traffic on ports 80 and 443. Ansible automates server setup, and Jenkins handles automatic deployment whenever code is updated on GitHub.
