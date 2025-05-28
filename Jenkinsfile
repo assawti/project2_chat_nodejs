@@ -20,6 +20,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
+                // Allow the pipeline to continue even if there is no test script
                 sh 'npm test || true'
             }
         }
@@ -29,6 +30,7 @@ pipeline {
                 sshagent(['project2-ssh-key']) {
                     sh '''
                     ssh -o StrictHostKeyChecking=no ubuntu@52.5.199.242 '
+                      git config --global --add safe.directory /home/ubuntu/chat-app &&
                       cd /home/ubuntu/chat-app &&
                       git pull &&
                       npm install &&
@@ -40,4 +42,3 @@ pipeline {
         }
     }
 }
-
